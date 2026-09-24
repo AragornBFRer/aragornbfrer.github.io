@@ -190,21 +190,16 @@
 
         .research-list {
             display: grid;
-            gap: 0.75rem;
+            gap: 1.2rem;
             list-style: none;
-            margin: 1.1rem 0;
+            margin: 1.6rem 0;
             padding: 0;
         }
 
-        .research-list li {
-            color: #333333;
-            font-size: 1rem;
-            padding: 0;
-        }
-
-        .research-list strong {
-            font-weight: 600;
-            color: #000000;
+        .research-list p {
+            color: #444444;
+            font-size: 0.96rem;
+            margin-top: 0.2rem;
         }
 
         .publication {
@@ -367,7 +362,8 @@
                 I have been working on agentic scientific discovery and the evaluation of AI systems.
             </p>
             <p class="bio">
-                I am a PhD student in Statistics at the Wharton School, University of Pennsylvania.
+                I am a PhD student in Statistics at the Wharton School, University of Pennsylvania,
+                and collaborate closely with Prof. <a href="https://ying531.github.io/">Ying Jin</a>.
                 Before that, I studied Mathematics and Computer Science at HKUST, where I worked on
                 conformal prediction with Prof. <a href="https://facultyprofiles.hkust.edu.hk/profiles.php?profile=xinzhou-guo-xinzhoug">Xinzhou Guo</a>
                 and on cognitive science and intention understanding with
@@ -382,20 +378,36 @@
         <section aria-labelledby="research-title">
             <h2 id="research-title">Research</h2>
             <p class="note">
-                Machine learning now produces predictions and hypotheses in large numbers, but knowing
-                which ones to trust, and how to act on them, is still hard.  I develop statistical methods for assessing predictions and discoveries from modern machine-learning systems, including flexible and black-box models, with guarantees that hold under weak modeling assumptions.
+                LLMs now produce predictions and hypotheses in large numbers, but knowing
+                which ones to trust, and how to act on them, is still hard. I develop statistical methods
+                that address these questions for flexible and black-box models alike, with guarantees
+                that hold under weak modeling assumptions.
             </p>
             <ul class="research-list">
-                <li><strong>When to trust a prediction.</strong> Conformal inference and uncertainty quantification: distribution-free prediction sets, principled abstention, and coverage that holds uniformly across heterogeneous populations rather than only on average.</li>
-                <li><strong>Which discoveries are real.</strong> Data-driven selection makes findings look stronger than they are. Selective inference and multiple testing restore valid error control when many candidate features, models, or hypotheses are screened and only the most promising are reported.</li>
-                <li><strong>What happens when we act.</strong> Causal inference: estimating the effects of interventions from experimental and observational data, and assessing whether those effects carry over to new populations and time periods.</li>
-                <li><strong>Agentic scientific discovery.</strong> AI agents that propose hypotheses, design experiments, and interpret results face all three questions at once. When hypotheses are cheap to generate, the bottleneck shifts to validating them rigorously.</li>
-                <li><strong>Evaluating AI systems.</strong> Judging a model by the statistical quality of its findings, such as whether they come with valid error control and whether the model has the power to detect real effects. Evaluations of this kind can also guide the training of better models.</li>
+                <li>
+                    <h3>When to trust a prediction</h3>
+                    <p>Conformal inference and uncertainty quantification: constructing prediction sets with finite-sample guarantees, quantifying uncertainty, and enabling principled abstention when predictions are unreliable.</p>
+                </li>
+                <li>
+                    <h3>Which discoveries are real</h3>
+                    <p>Searching over many candidate features, models, or hypotheses can distort the evidence for the ones ultimately selected. Selective inference and multiple testing provide principled ways to account for this selection and control false discoveries.</p>
+                </li>
+                <li>
+                    <h3>What happens when we act</h3>
+                    <p>Causal inference: estimating the effects of interventions from experimental and observational data, and assessing whether those effects carry over to new populations and time periods.</p>
+                </li>
+                <li>
+                    <h3>Agentic scientific discovery</h3>
+                    <p>AI agents that propose hypotheses, design experiments, and interpret results face all three questions at once. When hypotheses are cheap to generate, the bottleneck shifts to validating them rigorously.</p>
+                </li>
+                <li>
+                    <h3>Evaluating AI systems</h3>
+                    <p>Evaluating AI systems by the statistical quality of the discoveries they produce: whether findings come with valid error control, whether real effects can be detected reliably, and how these signals can be used to improve the systems themselves. Such evaluation may provide a foundation for iterative, and potentially recursive, improvement.</p>
+                </li>
             </ul>
             <p class="note">
                 I also enjoy the engineering side of research, particularly building tools and workflows that make statistical ideas useful in scientific and applied settings.
-                More broadly, I am interested in turning research ideas into tools with real-world value.
-                I am always glad to hear from researchers and practitioners working on related problems.
+                More broadly, I am interested in turning research ideas into something of real-world value. I am always glad to hear from researchers and practitioners working on related problems.
             </p>
         </section>
 
