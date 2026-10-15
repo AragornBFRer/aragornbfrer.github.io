@@ -201,42 +201,6 @@
             vertical-align: baseline;
         }
 
-        .research-list summary {
-            color: var(--text);
-            cursor: pointer;
-            font-weight: 600;
-            list-style: none;
-            padding-right: 1.5rem;
-            position: relative;
-        }
-
-        .research-list summary::-webkit-details-marker {
-            display: none;
-        }
-
-        .research-list summary::after {
-            color: var(--light-muted);
-            content: "+";
-            font-weight: 400;
-            position: absolute;
-            right: 0;
-            top: 0;
-        }
-
-        .research-list details[open] > summary::after {
-            content: "\2212";
-        }
-
-        .research-list summary:hover,
-        .research-list summary:hover::after,
-        .research-list summary:focus-visible {
-            color: var(--accent);
-        }
-
-        .research-list p {
-            margin: 0.3rem 0 0.5rem;
-        }
-
         footer {
             color: var(--muted);
             font-size: var(--small);
@@ -300,48 +264,7 @@
 
         <section aria-labelledby="research-title">
             <h2 id="research-title">Research</h2>
-            <p>
-                LLMs now produce predictions and hypotheses in large numbers, but knowing
-                which ones to trust, and how to act on them, is still hard. I develop statistical methods
-                that address these questions for flexible and black-box models alike, with guarantees
-                that hold under weak modeling assumptions.
-            </p>
-            <ul class="rows research-list">
-                <li>
-                    <details>
-                        <summary>When to trust a prediction</summary>
-                        <p>Conformal inference and uncertainty quantification: constructing prediction sets with finite-sample guarantees, quantifying uncertainty, and enabling principled abstention when predictions are unreliable.</p>
-                    </details>
-                </li>
-                <li>
-                    <details>
-                        <summary>Which discoveries are real</summary>
-                        <p>Searching over many candidate features, models, or hypotheses can distort the evidence for the ones ultimately selected. Selective inference and multiple testing provide principled ways to account for this selection and control false discoveries.</p>
-                    </details>
-                </li>
-                <li>
-                    <details>
-                        <summary>What happens when we act</summary>
-                        <p>Causal inference: estimating the effects of interventions from experimental and observational data, and assessing whether those effects carry over to new populations and time periods.</p>
-                    </details>
-                </li>
-                <li>
-                    <details>
-                        <summary>Agentic scientific discovery</summary>
-                        <p>AI agents that propose hypotheses, design experiments, and interpret results face all three questions at once. When hypotheses are cheap to generate, the bottleneck shifts to validating them rigorously.</p>
-                    </details>
-                </li>
-                <li>
-                    <details>
-                        <summary>Evaluating AI systems</summary>
-                        <p>Evaluating AI systems by the statistical quality of the discoveries they produce: whether findings come with valid error control, whether real effects can be detected reliably, and how these signals can be used to improve the systems themselves. Such evaluation may provide a foundation for iterative, and potentially recursive, improvement.</p>
-                    </details>
-                </li>
-            </ul>
-            <p>
-                I also enjoy the engineering side of research, particularly building tools and workflows that make statistical ideas useful in scientific and applied settings.
-                More broadly, I am interested in turning research ideas into something of real-world value. I am always glad to hear from researchers and practitioners working on related problems.
-            </p>
+            <p>In exploration.</p>
         </section>
 
         <section aria-labelledby="publications-title">
