@@ -1,0 +1,559 @@
+/* Shared by every page: palette and themes, type, links, plates and the tucked prints. Page layouts stay in each page. */
+
+:root {
+    --desk: #f3efe6;
+    --card: #f9f7f1;
+    --print: #f9f7f1;
+    --pill: rgba(249, 247, 241, 0.7);
+    --text: #3d3a35;
+    --muted: #6e6960;
+    --faint: #9a948a;
+    --ink: #1f1d1a;
+    --rule: rgba(31, 29, 26, 0.14);
+    --link-line: rgba(31, 29, 26, 0.3);
+    --highlight: rgba(230, 193, 90, 0.6);
+    --accent: #cf5137;
+    --shadow: rgba(31, 29, 26, 0.12);
+    --plate: #ebe4d6;
+    --cyan: #3f6ea6;
+    --ochre: #e6c15a;
+    --sage: #9fb59c;
+    --sky: #c3d5d4;
+    --vermilion: #cf5137;
+    --sans: "Schibsted Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+    --column: min(600px, calc(100vw - 480px));
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.12 0 0 0 0 0.11 0 0 0 0 0.1 0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    color-scheme: light;
+}
+
+/* Dark: the desk turns dark while the prints keep their paper. The plate colours never change. */
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --desk: #171614;
+        --card: #211f1b;
+        --print: #ebe5d8;
+        --pill: rgba(33, 31, 27, 0.72);
+        --text: #cfc8bb;
+        --muted: #a0998d;
+        --faint: #78726a;
+        --ink: #f1ebe0;
+        --rule: rgba(241, 235, 224, 0.15);
+        --link-line: rgba(241, 235, 224, 0.32);
+        --highlight: rgba(230, 193, 90, 0.3);
+        --accent: #e5704f;
+        --shadow: rgba(0, 0, 0, 0.45);
+        color-scheme: dark;
+    }
+}
+
+:root[data-theme="dark"] {
+    --desk: #171614;
+    --card: #211f1b;
+    --print: #ebe5d8;
+    --pill: rgba(33, 31, 27, 0.72);
+    --text: #cfc8bb;
+    --muted: #a0998d;
+    --faint: #78726a;
+    --ink: #f1ebe0;
+    --rule: rgba(241, 235, 224, 0.15);
+    --link-line: rgba(241, 235, 224, 0.32);
+    --highlight: rgba(230, 193, 90, 0.3);
+    --accent: #e5704f;
+    --shadow: rgba(0, 0, 0, 0.45);
+    color-scheme: dark;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-font-smoothing: antialiased;
+    background: var(--desk);
+    color: var(--text);
+    font: 400 18px/1.62 var(--serif);
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    position: relative;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+figure {
+    margin: 0;
+}
+
+a {
+    color: inherit;
+}
+
+/* Pill links and the theme toggle beside them */
+
+.links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 24px;
+}
+
+.links a {
+    background: var(--pill);
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    color: var(--ink);
+    font: 500 14px / 1 var(--sans);
+    padding: 9px 15px;
+    text-decoration: none;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.links a:hover,
+.links a:focus-visible,
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--desk);
+}
+
+.theme-toggle {
+    align-items: center;
+    background: var(--pill);
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    color: var(--ink);
+    cursor: pointer;
+    display: inline-flex;
+    flex: none;
+    height: 34px;
+    justify-content: center;
+    padding: 0;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+    width: 34px;
+}
+
+.theme-toggle[hidden] {
+    display: none;
+}
+
+.theme-toggle svg {
+    height: 16px;
+    width: 16px;
+}
+
+.theme-toggle[data-next="dark"] .icon-sun,
+.theme-toggle[data-next="light"] .icon-moon {
+    display: none;
+}
+
+/* Footer, with the bell curve as the way back to the top */
+
+footer {
+    align-items: baseline;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    display: flex;
+    font: 400 14px / 1.5 var(--sans);
+    gap: 16px;
+    justify-content: space-between;
+    margin-top: 96px;
+    padding-top: 18px;
+}
+
+footer a {
+    color: inherit;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: var(--ink);
+    text-decoration: underline;
+}
+
+.to-top {
+    align-items: baseline;
+    display: inline-flex;
+    flex: none;
+    font: 500 13px / 1 var(--sans);
+    gap: 10px;
+    letter-spacing: 0.02em;
+    padding: 4px 0;
+}
+
+footer .to-top:hover,
+footer .to-top:focus-visible {
+    color: var(--ink);
+    text-decoration: none;
+}
+
+.to-top svg {
+    color: var(--accent);
+    height: 24px;
+    overflow: visible;
+    width: 40px;
+}
+
+.to-top .bell,
+.to-top .chevron {
+    transform-box: fill-box;
+    transition: transform 0.45s cubic-bezier(0.22, 0.8, 0.24, 1);
+}
+
+.to-top .bell {
+    transform-origin: 50% 100%;
+}
+
+.to-top:hover .bell,
+.to-top:focus-visible .bell {
+    transform: scaleY(1.35);
+}
+
+.to-top:hover .chevron,
+.to-top:focus-visible .chevron {
+    transform: translateY(-4px);
+}
+
+/* Plates: an archival image over a colour block and grid. More compositions live in the private plates library. */
+
+.plate {
+    background: var(--plate);
+    border-radius: 1px;
+    isolation: isolate;
+    overflow: hidden;
+    position: relative;
+}
+
+.plate::after {
+    background: var(--grain);
+    content: "";
+    inset: 0;
+    mix-blend-mode: multiply;
+    opacity: 0.3;
+    pointer-events: none;
+    position: absolute;
+}
+
+.plate > * {
+    position: absolute;
+}
+
+.plate img {
+    display: block;
+    height: auto;
+}
+
+.plate .scan {
+    mix-blend-mode: multiply;
+}
+
+.plate svg {
+    height: 100%;
+    inset: 0;
+    overflow: visible;
+    width: 100%;
+}
+
+.plate > .band,
+.plate > .graph,
+.plate > .dots,
+.plate > .ruled {
+    height: 100%;
+    top: 0;
+}
+
+.grid-white {
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+    background-size: 12px 12px;
+}
+
+.grid-ink {
+    background-image:
+        linear-gradient(rgba(31, 29, 26, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31, 29, 26, 0.1) 1px, transparent 1px);
+    background-size: 12px 12px;
+}
+
+.dots {
+    background-image: radial-gradient(rgba(31, 29, 26, 0.3) 1px, transparent 1.4px);
+    background-size: 11px 11px;
+}
+
+.ruled {
+    background-image: linear-gradient(transparent 15px, rgba(63, 110, 166, 0.22) 15px 16px, transparent 16px);
+    background-size: 100% 16px;
+}
+
+.stroke {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+}
+
+.curve {
+    stroke: var(--vermilion);
+    stroke-width: 1.6;
+}
+
+.marks {
+    stroke: rgba(31, 29, 26, 0.5);
+    stroke-width: 1;
+}
+
+/* Galton, quincunx, 1889 */
+
+.plate-galton {
+    aspect-ratio: 4 / 5;
+}
+
+.plate-galton .band {
+    background-color: var(--cyan);
+    left: 68%;
+    width: 32%;
+}
+
+.plate-galton .graph {
+    height: 34%;
+    left: 0;
+    top: 66%;
+    width: 68%;
+}
+
+.plate-galton img {
+    left: 7%;
+    top: 7%;
+    width: 86%;
+}
+
+/* Nightingale, polar-area diagram, 1858 */
+
+.plate-nightingale {
+    aspect-ratio: 1;
+}
+
+.plate-nightingale .band {
+    background: var(--sky);
+    left: 52%;
+    width: 48%;
+}
+
+.plate-nightingale .dots {
+    left: 0;
+    width: 52%;
+}
+
+.plate-nightingale img {
+    left: 7%;
+    top: 5%;
+    width: 86%;
+}
+
+/* Playfair, trade with Denmark and Norway, 1786 */
+
+.plate-playfair {
+    aspect-ratio: 16 / 11;
+}
+
+.plate-playfair .band {
+    background: var(--sage);
+    left: 0;
+    width: 24%;
+}
+
+.plate-playfair img {
+    left: 9%;
+    top: 3%;
+    width: 94%;
+}
+
+/* Darwin, "I think", 1837 */
+
+.plate-darwin {
+    aspect-ratio: 4 / 5;
+}
+
+.plate-darwin .band {
+    background: var(--ochre);
+    left: 60%;
+    width: 40%;
+}
+
+.plate-darwin .ruled {
+    left: 0;
+    width: 60%;
+}
+
+.plate-darwin img {
+    left: 6%;
+    top: 4%;
+    width: 78%;
+}
+
+/* Lovelace, Note G, 1843 */
+
+.plate-lovelace {
+    aspect-ratio: 16 / 11;
+}
+
+.plate-lovelace .band {
+    background-color: var(--cyan);
+    height: 20%;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.plate-lovelace img {
+    left: 5%;
+    top: 5%;
+    width: 90%;
+}
+
+/* Tucked prints: each page places its .tuck elements with --top, --size, --peek, --open and --tilt. */
+
+.tucks {
+    inset: 0;
+    overflow: clip;
+    pointer-events: none;
+    position: absolute;
+    z-index: 1;
+}
+
+/* Drawn out, a print shows --open of its width, which must still end short of the reading column. */
+.tuck {
+    --margin: calc((100vw - var(--column)) / 2);
+    --max-w: clamp(300px, 28vw, 540px);
+    --w: calc(var(--size) * min(var(--max-w), (var(--margin) - 56px) / var(--open)));
+    position: absolute;
+    top: var(--top);
+    width: var(--w);
+    will-change: transform;
+}
+
+.tuck-left {
+    --side: -1;
+    left: 0;
+}
+
+.tuck-right {
+    --side: 1;
+    right: 0;
+}
+
+/* A single nudge on arrival, so visitors see the slivers can be drawn out. */
+@media (prefers-reduced-motion: no-preference) {
+    .tuck.peeks {
+        animation: peek 1.5s cubic-bezier(0.3, 0.7, 0.3, 1) var(--peek-delay, 1.2s);
+    }
+}
+
+@keyframes peek {
+    40% {
+        translate: calc(var(--side) * -26px) 0;
+    }
+}
+
+.print {
+    --drawn: 0;
+    --shown: calc(var(--peek) + (var(--open) - var(--peek)) * var(--drawn));
+    -webkit-tap-highlight-color: transparent;
+    background: var(--print);
+    border-radius: 3px;
+    box-shadow:
+        0 1px 1.5px var(--shadow),
+        0 5px 16px rgba(31, 29, 26, 0.08);
+    outline-offset: 5px;
+    padding: 9px;
+    pointer-events: auto;
+    position: relative;
+    transform:
+        translateX(calc(var(--side) * (1 - var(--shown)) * 100%))
+        rotate(calc(var(--tilt) * (1 - 0.65 * var(--drawn))));
+    transition: transform 0.7s cubic-bezier(0.22, 0.8, 0.24, 1) 0.12s;
+}
+
+.print::before {
+    border-radius: inherit;
+    box-shadow:
+        0 2px 5px rgba(31, 29, 26, 0.06),
+        0 28px 52px -14px rgba(31, 29, 26, 0.34);
+    content: "";
+    inset: 0;
+    opacity: var(--drawn);
+    pointer-events: none;
+    position: absolute;
+    transition: opacity 0.7s ease 0.12s;
+}
+
+.print figcaption {
+    color: #6e6960;
+    font: 500 11px / 1 var(--sans);
+    letter-spacing: 0.02em;
+    margin-top: 9px;
+    opacity: var(--drawn);
+    transition: opacity 0.3s ease;
+}
+
+.tuck-left figcaption {
+    text-align: right;
+}
+
+.print.is-open,
+.print:focus-visible {
+    --drawn: 1;
+    transition-delay: 0s;
+}
+
+.print:focus-visible {
+    outline: 1.5px solid var(--muted);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .print:hover {
+        --drawn: 1;
+        transition-delay: 0.04s;
+    }
+}
+
+.print.is-open::before,
+.print:focus-visible::before,
+.print:hover::before {
+    transition-delay: 0s;
+}
+
+.print.is-open figcaption,
+.print:focus-visible figcaption,
+.print:hover figcaption {
+    transition: opacity 0.5s ease 0.25s;
+}
+
+@media (max-width: 959px) {
+    :root {
+        --column: 600px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .print,
+    .print::before,
+    .print figcaption,
+    .to-top .bell,
+    .to-top .chevron {
+        transition: none !important;
+    }
+}

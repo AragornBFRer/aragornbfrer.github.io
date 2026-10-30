@@ -5,60 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Yuqi Yang (Aragorn), Statistics PhD student at Wharton working on uncertainty quantification, conformal and causal inference, agentic scientific discovery, and AI evaluation.">
     <title>Yuqi Yang (Aragorn)</title>
+    <script>
+        try {
+            const theme = localStorage.getItem("theme");
+            if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+        } catch (err) {}
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400&display=swap">
+    <link rel="stylesheet" href="assets/site.css">
+    <script src="assets/site.js" defer></script>
     <style>
-        :root {
-            --desk: #f3efe6;
-            --card: #f9f7f1;
-            --text: #3d3a35;
-            --muted: #6e6960;
-            --faint: #9a948a;
-            --rule: rgba(31, 29, 26, 0.14);
-            --plate: #ebe4d6;
-            --ink: #1f1d1a;
-            --cyan: #3f6ea6;
-            --ochre: #e6c15a;
-            --sage: #9fb59c;
-            --vermilion: #cf5137;
-            --sans: "Schibsted Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
-            --column: min(600px, calc(100vw - 480px));
-            --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.12 0 0 0 0 0.11 0 0 0 0 0.1 0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-            color-scheme: light;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            -webkit-font-smoothing: antialiased;
-            background: var(--desk);
-            color: var(--text);
-            font: 400 18px/1.62 var(--serif);
-            scroll-behavior: smooth;
-        }
-
-        body {
-            margin: 0;
-            position: relative;
-        }
-
-        h1,
-        h2,
-        h3,
-        p,
-        ul,
-        figure {
-            margin: 0;
-        }
-
-        a {
-            color: inherit;
-        }
-
         /* Landing */
 
         .landing {
@@ -95,29 +53,16 @@
             white-space: nowrap;
         }
 
-        .links {
+        .masthead-actions {
+            align-items: center;
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
             margin-top: 24px;
         }
 
-        .links a {
-            background: rgba(249, 247, 241, 0.7);
-            border: 1px solid var(--rule);
-            border-radius: 999px;
-            color: var(--ink);
-            font: 500 14px / 1 var(--sans);
-            padding: 9px 15px;
-            text-decoration: none;
-            transition: background-color 0.2s, border-color 0.2s, color 0.2s;
-        }
-
-        .links a:hover,
-        .links a:focus-visible {
-            background: var(--ink);
-            border-color: var(--ink);
-            color: var(--desk);
+        .masthead-actions .links {
+            margin-top: 0;
         }
 
         .about {
@@ -136,7 +81,7 @@
         .sheet p a {
             color: var(--ink);
             text-decoration: underline;
-            text-decoration-color: rgba(31, 29, 26, 0.3);
+            text-decoration-color: var(--link-line);
             text-decoration-thickness: 1px;
             text-underline-offset: 0.2em;
             transition: text-decoration-color 0.2s;
@@ -144,38 +89,47 @@
 
         .about a:hover,
         .sheet p a:hover {
-            text-decoration-color: var(--vermilion);
+            text-decoration-color: var(--accent);
         }
 
         /* Scroll cue */
 
         .scroll-cue {
-            bottom: 32px;
-            display: block;
-            height: 50px;
-            left: 50%;
-            overflow: hidden;
+            align-items: center;
+            background: var(--card);
+            border: 1px solid var(--rule);
+            border-radius: 50%;
+            bottom: 30px;
+            box-shadow:
+                0 1px 1.5px var(--shadow),
+                0 4px 14px rgba(31, 29, 26, 0.07);
+            color: var(--ink);
+            display: flex;
+            height: 46px;
+            justify-content: center;
+            left: calc(50% - 23px);
             position: absolute;
-            transform: translateX(-50%);
-            transition: opacity 0.4s ease;
-            width: 24px;
+            transition: opacity 0.4s ease, background-color 0.2s, border-color 0.2s, color 0.2s;
+            width: 46px;
             z-index: 2;
         }
 
-        .ribbon {
-            background: var(--vermilion);
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 6px), 0 100%);
-            height: 52px;
-            left: calc(50% - 4px);
-            position: absolute;
-            top: -12px;
-            transition: transform 0.5s cubic-bezier(0.22, 0.8, 0.24, 1);
-            width: 8px;
+        .scroll-cue svg {
+            height: 20px;
+            transition: transform 0.35s cubic-bezier(0.22, 0.8, 0.24, 1);
+            width: 12px;
         }
 
-        .scroll-cue:hover .ribbon,
-        .scroll-cue:focus-visible .ribbon {
-            transform: translateY(8px);
+        .scroll-cue:hover,
+        .scroll-cue:focus-visible {
+            background: var(--ink);
+            border-color: var(--ink);
+            color: var(--desk);
+        }
+
+        .scroll-cue:hover svg,
+        .scroll-cue:focus-visible svg {
+            transform: translateY(2px);
         }
 
         html.scrolled .scroll-cue {
@@ -239,21 +193,21 @@
         .byline a {
             color: var(--ink);
             text-decoration: underline;
-            text-decoration-color: rgba(31, 29, 26, 0.25);
+            text-decoration-color: var(--link-line);
             text-underline-offset: 0.25em;
         }
 
         .byline a:hover {
-            text-decoration-color: var(--vermilion);
+            text-decoration-color: var(--accent);
         }
 
         .author-me {
-            background: linear-gradient(transparent 58%, rgba(230, 193, 90, 0.6) 58%);
+            background: linear-gradient(transparent 58%, var(--highlight) 58%);
             color: var(--ink);
         }
 
         .cofirst {
-            color: var(--vermilion);
+            color: var(--accent);
             font-size: 0.72em;
             line-height: 0;
             margin-left: 0.05em;
@@ -288,324 +242,7 @@
             font-variant-numeric: tabular-nums;
         }
 
-        footer {
-            align-items: center;
-            border-top: 1px solid var(--rule);
-            color: var(--muted);
-            display: flex;
-            font: 400 14px / 1.5 var(--sans);
-            gap: 16px;
-            justify-content: space-between;
-            margin-top: 96px;
-            padding-top: 18px;
-        }
-
-        footer a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            color: var(--ink);
-            text-decoration: underline;
-        }
-
-        .colophon {
-            color: var(--vermilion);
-            flex: none;
-            height: 14px;
-            width: 40px;
-        }
-
-        /* Plates */
-
-        .plate {
-            background: var(--plate);
-            border-radius: 1px;
-            isolation: isolate;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .plate::after {
-            background: var(--grain);
-            content: "";
-            inset: 0;
-            mix-blend-mode: multiply;
-            opacity: 0.3;
-            pointer-events: none;
-            position: absolute;
-        }
-
-        .plate > * {
-            position: absolute;
-        }
-
-        .plate img {
-            display: block;
-            height: auto;
-        }
-
-        .plate .scan {
-            mix-blend-mode: multiply;
-        }
-
-        .plate svg {
-            height: 100%;
-            inset: 0;
-            overflow: visible;
-            width: 100%;
-        }
-
-        .plate > .band,
-        .plate > .graph,
-        .plate > .ruled {
-            height: 100%;
-            top: 0;
-        }
-
-        .grid-white {
-            background-image:
-                linear-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
-            background-size: 12px 12px;
-        }
-
-        .grid-ink {
-            background-image:
-                linear-gradient(rgba(31, 29, 26, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(31, 29, 26, 0.1) 1px, transparent 1px);
-            background-size: 12px 12px;
-        }
-
-        .ruled {
-            background-image: linear-gradient(transparent 15px, rgba(63, 110, 166, 0.22) 15px 16px, transparent 16px);
-            background-size: 100% 16px;
-        }
-
-        .stroke {
-            fill: none;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            vector-effect: non-scaling-stroke;
-        }
-
-        .curve {
-            stroke: var(--vermilion);
-            stroke-width: 1.6;
-        }
-
-        .marks {
-            stroke: rgba(31, 29, 26, 0.5);
-            stroke-width: 1;
-        }
-
-        /* Galton, quincunx, 1889 */
-
-        .plate-galton {
-            aspect-ratio: 4 / 5;
-        }
-
-        .plate-galton .band {
-            background-color: var(--cyan);
-            left: 68%;
-            width: 32%;
-        }
-
-        .plate-galton .graph {
-            height: 34%;
-            left: 0;
-            top: 66%;
-            width: 68%;
-        }
-
-        .plate-galton img {
-            left: 7%;
-            top: 7%;
-            width: 86%;
-        }
-
-        /* Playfair, trade with Denmark and Norway, 1786 */
-
-        .plate-playfair {
-            aspect-ratio: 16 / 11;
-        }
-
-        .plate-playfair .band {
-            background: var(--sage);
-            left: 0;
-            width: 24%;
-        }
-
-        .plate-playfair img {
-            left: 9%;
-            top: 3%;
-            width: 94%;
-        }
-
-        /* Darwin, "I think", 1837 */
-
-        .plate-darwin {
-            aspect-ratio: 4 / 5;
-        }
-
-        .plate-darwin .band {
-            background: var(--ochre);
-            left: 60%;
-            width: 40%;
-        }
-
-        .plate-darwin .ruled {
-            left: 0;
-            width: 60%;
-        }
-
-        .plate-darwin img {
-            left: 6%;
-            top: 4%;
-            width: 78%;
-        }
-
-        /* Lovelace, Note G, 1843 */
-
-        .plate-lovelace {
-            aspect-ratio: 16 / 11;
-        }
-
-        .plate-lovelace .band {
-            background-color: var(--cyan);
-            height: 20%;
-            left: 0;
-            top: 0;
-            width: 100%;
-        }
-
-        .plate-lovelace img {
-            left: 5%;
-            top: 5%;
-            width: 90%;
-        }
-
-        /* Tucked prints */
-
-        .tucks {
-            inset: 0;
-            overflow: clip;
-            pointer-events: none;
-            position: absolute;
-            z-index: 1;
-        }
-
-        /* Drawn out, a print shows --open of its width, which must still end short of the reading column. */
-        .tuck {
-            --margin: calc((100vw - var(--column)) / 2);
-            --max-w: clamp(300px, 28vw, 540px);
-            --w: calc(var(--size) * min(var(--max-w), (var(--margin) - 56px) / var(--open)));
-            position: absolute;
-            top: var(--top);
-            width: var(--w);
-            will-change: transform;
-        }
-
-        .tuck-left {
-            --side: -1;
-            left: 0;
-        }
-
-        .tuck-right {
-            --side: 1;
-            right: 0;
-        }
-
-        /* A single nudge on arrival, so visitors see the slivers can be drawn out. */
-        .tuck-galton,
-        .tuck-playfair {
-            animation: peek 1.5s cubic-bezier(0.3, 0.7, 0.3, 1) 1.2s;
-        }
-
-        .tuck-playfair {
-            animation-delay: 1.55s;
-        }
-
-        @keyframes peek {
-            40% {
-                translate: calc(var(--side) * -26px) 0;
-            }
-        }
-
-        .print {
-            --drawn: 0;
-            --shown: calc(var(--peek) + (var(--open) - var(--peek)) * var(--drawn));
-            -webkit-tap-highlight-color: transparent;
-            background: var(--card);
-            border-radius: 3px;
-            box-shadow:
-                0 1px 1.5px rgba(31, 29, 26, 0.12),
-                0 5px 16px rgba(31, 29, 26, 0.08);
-            outline-offset: 5px;
-            padding: 9px;
-            pointer-events: auto;
-            position: relative;
-            transform:
-                translateX(calc(var(--side) * (1 - var(--shown)) * 100%))
-                rotate(calc(var(--tilt) * (1 - 0.65 * var(--drawn))));
-            transition: transform 0.7s cubic-bezier(0.22, 0.8, 0.24, 1) 0.12s;
-        }
-
-        .print::before {
-            border-radius: inherit;
-            box-shadow:
-                0 2px 5px rgba(31, 29, 26, 0.06),
-                0 28px 52px -14px rgba(31, 29, 26, 0.34);
-            content: "";
-            inset: 0;
-            opacity: var(--drawn);
-            pointer-events: none;
-            position: absolute;
-            transition: opacity 0.7s ease 0.12s;
-        }
-
-        .print figcaption {
-            color: var(--muted);
-            font: 500 11px / 1 var(--sans);
-            letter-spacing: 0.02em;
-            margin-top: 9px;
-            opacity: var(--drawn);
-            transition: opacity 0.3s ease;
-        }
-
-        .tuck-left figcaption {
-            text-align: right;
-        }
-
-        .print.is-open,
-        .print:focus-visible {
-            --drawn: 1;
-            transition-delay: 0s;
-        }
-
-        .print:focus-visible {
-            outline: 1.5px solid rgba(31, 29, 26, 0.38);
-        }
-
-        @media (hover: hover) and (pointer: fine) {
-            .print:hover {
-                --drawn: 1;
-                transition-delay: 0.04s;
-            }
-        }
-
-        .print.is-open::before,
-        .print:focus-visible::before,
-        .print:hover::before {
-            transition-delay: 0s;
-        }
-
-        .print.is-open figcaption,
-        .print:focus-visible figcaption,
-        .print:hover figcaption {
-            transition: opacity 0.5s ease 0.25s;
-        }
+        /* Where the tucked prints sit on this page */
 
         .tuck-galton {
             --size: 0.86;
@@ -621,6 +258,7 @@
             --open: 0.8;
             --tilt: 2.8deg;
             --top: calc(50vh + 20px);
+            --peek-delay: 1.55s;
         }
 
         .tuck-darwin {
@@ -646,11 +284,7 @@
             }
 
             .scroll-cue {
-                bottom: 14px;
-            }
-
-            .ribbon {
-                top: -20px;
+                bottom: 16px;
             }
         }
 
@@ -658,7 +292,6 @@
 
         @media (max-width: 959px) {
             :root {
-                --column: 600px;
                 --band: clamp(132px, 12vw + 118px, min(222px, 34vh));
             }
 
@@ -705,20 +338,34 @@
             }
         }
 
+        /* Keep the four links and the theme toggle on one row on phones. */
+
+        @media (max-width: 420px) {
+            .masthead-actions,
+            .masthead-actions .links {
+                gap: 6px;
+            }
+
+            .masthead-actions .links a {
+                padding: 9px 10px;
+            }
+        }
+
+        @media (max-width: 389px) {
+            .masthead-actions .links a {
+                font-size: 13px;
+                padding: 8px 9px;
+            }
+
+            .masthead-actions .theme-toggle {
+                height: 31px;
+                width: 31px;
+            }
+        }
+
         @media (prefers-reduced-motion: reduce) {
-            html {
-                scroll-behavior: auto;
-            }
-
-            .print,
-            .print::before,
-            .print figcaption,
-            .ribbon {
-                transition: none !important;
-            }
-
-            .tuck {
-                animation: none;
+            .scroll-cue svg {
+                transition: none;
             }
         }
     </style>
@@ -728,12 +375,18 @@
         <div class="landing-content">
             <header class="masthead">
                 <h1 id="intro-title">Yuqi Yang <span>(Aragorn)</span></h1>
-                <nav class="links" aria-label="Primary">
-                    <a href="https://scholar.google.com/citations?user=ICgQw6wAAAAJ">Scholar</a>
-                    <a href="https://github.com/AragornBFRer">GitHub</a>
-                    <a href="https://www.linkedin.com/in/aragorn-y">LinkedIn</a>
-                    <a href="mailto:yangyuqi@wharton.upenn.edu">Email</a>
-                </nav>
+                <div class="masthead-actions">
+                    <nav class="links" aria-label="Primary">
+                        <a href="https://scholar.google.com/citations?user=ICgQw6wAAAAJ">Scholar</a>
+                        <a href="https://github.com/AragornBFRer">GitHub</a>
+                        <a href="https://www.linkedin.com/in/aragorn-y">LinkedIn</a>
+                        <a href="mailto:yangyuqi@wharton.upenn.edu">Email</a>
+                    </nav>
+                    <button class="theme-toggle" type="button" aria-label="Switch theme" hidden>
+                        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
+                        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>
+                    </button>
+                </div>
             </header>
 
             <section class="about" aria-label="About">
@@ -755,7 +408,9 @@
             </section>
         </div>
 
-        <a class="scroll-cue" href="#research" aria-label="Scroll down"><span class="ribbon"></span></a>
+        <a class="scroll-cue" href="#research" aria-label="Scroll down">
+            <svg viewBox="0 0 12 20" aria-hidden="true"><path d="M6 1.5v12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M1.6 12.4 6 19l4.4-6.6Q6 14.4 1.6 12.4Z" fill="currentColor"/></svg>
+        </a>
     </div>
 
     <main class="sheet">
@@ -811,12 +466,15 @@
 
         <footer>
             <p><a href="mailto:yangyuqi@wharton.upenn.edu">yangyuqi@wharton.upenn.edu</a></p>
-            <svg class="colophon" viewBox="0 0 40 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" aria-hidden="true"><path d="M1 13c7 0 9-.4 12-4.6S17 1 20 1s4 3.2 7 7.4S32 13 39 13"/></svg>
+            <a class="to-top" href="#top">
+                Back to top
+                <svg viewBox="0 -10 40 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="chevron" d="M16.5-3 20-6.5 23.5-3"/><path class="bell" d="M1 13c7 0 9-.4 12-4.6S17 1 20 1s4 3.2 7 7.4S32 13 39 13"/></svg>
+            </a>
         </footer>
     </main>
 
     <div class="tucks">
-        <div class="tuck tuck-left tuck-galton">
+        <div class="tuck tuck-left tuck-galton peeks">
             <figure class="print" tabindex="0">
                 <div class="plate plate-galton" aria-hidden="true">
                     <div class="band grid-white"></div>
@@ -831,7 +489,7 @@
             </figure>
         </div>
 
-        <div class="tuck tuck-right tuck-playfair">
+        <div class="tuck tuck-right tuck-playfair peeks">
             <figure class="print" tabindex="0">
                 <div class="plate plate-playfair" aria-hidden="true">
                     <div class="band"></div>
@@ -862,52 +520,5 @@
             </figure>
         </div>
     </div>
-
-    <script>
-        (() => {
-            const root = document.documentElement;
-            const tucks = [...document.querySelectorAll(".tuck")];
-            const prints = tucks.map((tuck) => tuck.querySelector(".print"));
-            const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
-
-            // Hover draws prints out for a mouse; on touch a tap toggles one print and a tap elsewhere puts it back.
-            addEventListener("pointerup", (event) => {
-                if (event.pointerType === "mouse") return;
-                const tapped = event.target.closest(".print");
-                for (const print of prints) {
-                    print.classList.toggle("is-open", print === tapped && !print.classList.contains("is-open"));
-                }
-            });
-
-            let centers = [];
-            let frame = 0;
-
-            // Prints trail the page by a few pixels, as if lying one layer beneath it.
-            function drift() {
-                frame = 0;
-                const middle = window.scrollY + window.innerHeight / 2;
-                tucks.forEach((tuck, i) => {
-                    const offset = reduceMotion.matches ? 0 : Math.max(-8, Math.min(8, (middle - centers[i]) * 0.016));
-                    tuck.style.transform = offset ? `translate3d(0, ${offset.toFixed(2)}px, 0)` : "";
-                });
-                root.classList.toggle("scrolled", window.scrollY > 40);
-            }
-
-            const schedule = () => {
-                if (!frame) frame = requestAnimationFrame(drift);
-            };
-
-            function measure() {
-                centers = tucks.map((tuck) => tuck.offsetTop + tuck.offsetHeight / 2);
-                schedule();
-            }
-
-            addEventListener("scroll", schedule, { passive: true });
-            addEventListener("resize", measure);
-            new ResizeObserver(measure).observe(document.body);
-            reduceMotion.addEventListener("change", schedule);
-            measure();
-        })();
-    </script>
 </body>
 </html>
