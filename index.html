@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Yuqi Yang (Aragorn), Statistics PhD student at Wharton working on uncertainty quantification, conformal and causal inference, agentic scientific discovery, and AI evaluation.">
+    <meta name="description" content="Yuqi Yang (Aragorn), PhD student in Statistics at the Wharton School, University of Pennsylvania.">
     <title>Yuqi Yang (Aragorn)</title>
     <script>
         try {
@@ -14,23 +14,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400&display=swap">
-    <link rel="stylesheet" href="assets/site.css?v=2">
-    <script src="assets/site.js?v=2" defer></script>
+    <link rel="stylesheet" href="assets/site.css?v=3">
+    <script src="assets/site.js?v=3" defer></script>
     <style>
-        /* Landing */
-
-        .landing {
-            align-items: center;
-            display: grid;
-            justify-items: center;
-            min-height: 100vh;
-            min-height: 100svh;
-            padding: 88px 24px 120px;
-            position: relative;
-        }
-
-        .landing-content {
-            width: min(100%, var(--column));
+        .page {
+            margin: 0 auto;
+            max-width: calc(var(--column) + 48px);
+            padding: 96px 24px;
         }
 
         h1 {
@@ -67,12 +57,7 @@
             margin-top: 16px;
         }
 
-        .lede {
-            color: var(--ink);
-        }
-
-        .about a,
-        .sheet p a {
+        main p a {
             color: var(--ink);
             text-decoration: underline;
             text-decoration-color: var(--link-line);
@@ -81,50 +66,8 @@
             transition: text-decoration-color 0.2s;
         }
 
-        .about a:hover,
-        .sheet p a:hover {
+        main p a:hover {
             text-decoration-color: var(--accent);
-        }
-
-        /* Scroll cue: one thin arrow at the foot of the first screen */
-
-        .scroll-cue {
-            bottom: 22px;
-            color: var(--faint);
-            left: calc(50% - 22px);
-            padding: 10px 15px;
-            position: absolute;
-            transition: color 0.2s, opacity 0.4s ease;
-        }
-
-        .scroll-cue svg {
-            display: block;
-            height: 40px;
-            transition: transform 0.35s cubic-bezier(0.22, 0.8, 0.24, 1);
-            width: 14px;
-        }
-
-        .scroll-cue:hover,
-        .scroll-cue:focus-visible {
-            color: var(--ink);
-        }
-
-        .scroll-cue:hover svg,
-        .scroll-cue:focus-visible svg {
-            transform: translateY(4px);
-        }
-
-        html.scrolled .scroll-cue {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        /* Reading sheet */
-
-        .sheet {
-            margin: 0 auto;
-            max-width: calc(var(--column) + 48px);
-            padding: 0 24px 96px;
         }
 
         section + section {
@@ -172,17 +115,6 @@
             margin: 0 0.3rem 0 0.55rem;
         }
 
-        .byline a {
-            color: var(--ink);
-            text-decoration: underline;
-            text-decoration-color: var(--link-line);
-            text-underline-offset: 0.25em;
-        }
-
-        .byline a:hover {
-            text-decoration-color: var(--accent);
-        }
-
         .author-me {
             background: linear-gradient(transparent 58%, var(--highlight) 58%);
             color: var(--ink);
@@ -224,29 +156,9 @@
             font-variant-numeric: tabular-nums;
         }
 
-        @media (max-height: 820px) and (min-width: 960px) {
-            .landing {
-                padding-bottom: 88px;
-                padding-top: 56px;
-            }
-
-            .scroll-cue {
-                bottom: 16px;
-            }
-        }
-
         @media (max-width: 959px) {
-            .landing {
-                align-items: start;
-                padding: 72px 22px 56px;
-            }
-
-            .scroll-cue {
-                display: none;
-            }
-
-            .sheet {
-                padding: 8px 22px 64px;
+            .page {
+                padding: 72px 22px 64px;
             }
 
             section + section {
@@ -286,37 +198,28 @@
                 width: 31px;
             }
         }
-
-        @media (prefers-reduced-motion: reduce) {
-            .scroll-cue svg {
-                transition: none;
-            }
-        }
     </style>
 </head>
 <body>
-    <div class="landing">
-        <div class="landing-content">
-            <header class="masthead">
-                <h1 id="intro-title">Yuqi Yang <span>(Aragorn)</span></h1>
-                <div class="masthead-actions">
-                    <nav class="links" aria-label="Primary">
-                        <a href="https://scholar.google.com/citations?user=ICgQw6wAAAAJ">Scholar</a>
-                        <a href="https://github.com/AragornBFRer">GitHub</a>
-                        <a href="https://www.linkedin.com/in/aragorn-y">LinkedIn</a>
-                        <a href="mailto:yangyuqi@wharton.upenn.edu">Email</a>
-                    </nav>
-                    <button class="theme-toggle" type="button" aria-label="Switch theme" hidden>
-                        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
-                        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>
-                    </button>
-                </div>
-            </header>
+    <div class="page">
+        <header class="masthead">
+            <h1 id="intro-title">Yuqi Yang <span>(Aragorn)</span></h1>
+            <div class="masthead-actions">
+                <nav class="links" aria-label="Primary">
+                    <a href="https://scholar.google.com/citations?user=ICgQw6wAAAAJ">Scholar</a>
+                    <a href="https://github.com/AragornBFRer">GitHub</a>
+                    <a href="https://www.linkedin.com/in/aragorn-y">LinkedIn</a>
+                    <a href="mailto:yangyuqi@wharton.upenn.edu">Email</a>
+                </nav>
+                <button class="theme-toggle" type="button" aria-label="Switch theme" hidden>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>
+                </button>
+            </div>
+        </header>
 
+        <main>
             <section class="about" aria-label="About">
-                <p class="lede">
-                    I study how to make reliable decisions with imperfect models, with a focus on uncertainty quantification, conformal inference, and causal inference. More recently, I have been working on multi-agent AI systems for scientific discovery and the principled evaluation of AI systems.
-                </p>
                 <p>
                     I am a PhD student in Statistics at the Wharton School, University of Pennsylvania,
                     and collaborate closely with Prof. <a href="https://ying531.github.io/">Ying Jin</a>.
@@ -330,63 +233,57 @@
                     During my undergrad, I also did internships in quantitative research at Hangzhou Wangdao, hedge fund research at Jihai Investment, and software development at Hundsun.
                 </p>
             </section>
-        </div>
 
-        <a class="scroll-cue" href="#research" aria-label="Scroll down">
-            <svg viewBox="0 0 14 40" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 1v37M1.5 32.5 7 38l5.5-5.5"/></svg>
-        </a>
-    </div>
+            <section aria-labelledby="research-title">
+                <h2 id="research-title">Research</h2>
+                <p>Under exploration.</p>
+            </section>
 
-    <main class="sheet">
-        <section id="research" aria-labelledby="research-title">
-            <h2 id="research-title">Research</h2>
-            <p>Under exploration.</p>
-        </section>
+            <section aria-labelledby="publications-title">
+                <h2 id="publications-title">Publications</h2>
 
-        <section aria-labelledby="publications-title">
-            <h2 id="publications-title">Publications</h2>
+                <article class="entry">
+                    <h3>Multi-Distribution Robust Conformal Prediction</h3>
+                    <p class="summary">One single prediction set that offers valid coverage over multiple heterogeneous distributions.</p>
+                    <p class="small byline">
+                        <span><span class="author-me">Yuqi Yang</span>, Ying Jin</span>
+                        <span>ICML 2026</span>
+                        <a href="https://arxiv.org/abs/2601.02998">Paper</a>
+                        <a href="https://github.com/AragornBFRer/MDCP">Code</a>
+                    </p>
+                </article>
 
-            <article class="entry">
-                <h3>Multi-Distribution Robust Conformal Prediction</h3>
-                <p class="summary">One single prediction set that offers valid coverage over multiple heterogeneous distributions.</p>
-                <p class="small byline">
-                    <span><span class="author-me">Yuqi Yang</span>, Ying Jin</span>
-                    <span>ICML 2026</span>
-                    <a href="https://arxiv.org/abs/2601.02998">Paper</a>
-                    <a href="https://github.com/AragornBFRer/MDCP">Code</a>
+                <article class="entry">
+                    <h3>SessionIntentBench: Multi-task Inter-Session Intention-Shift Modeling Benchmark for E-commerce Customer Behavior Understanding</h3>
+                    <p class="summary">Modeling framework for user purchase intent by extracting structured features from e-commerce session interactions.</p>
+                    <p class="small byline">
+                        <span><span class="author-me">Yuqi Yang<sup class="cofirst" aria-label="co-first author">*</sup></span>, Weiqi Wang<sup class="cofirst" aria-label="co-first author">*</sup>, Baixuan Xu, Wei Fan, Qing Zong, Chunkit Chan, Zheye Deng, Xin Liu, Yifan Gao, Changlong Yu, Chen Luo, Yang Li, Zheng Li, Qingyu Yin, Bing Yin, Yangqiu Song</span>
+                        <span>ACL 2026 Findings</span>
+                        <a href="https://arxiv.org/abs/2507.20185">Paper</a>
+                    </p>
+                </article>
+
+                <p class="small note"><sup class="cofirst">*</sup> Co-first authors.</p>
+            </section>
+
+            <section aria-labelledby="awards-title">
+                <h2 id="awards-title">Selected Awards</h2>
+                <ul class="rows">
+                    <li class="row"><span>China Construction Bank Asia Scholarship</span><span class="small">Aug 2024</span></li>
+                    <li class="row"><span>S.S. Chern Class Scholarship</span><span class="small">May 2024</span></li>
+                    <li class="row"><span>Chiaphua Industries Limited Scholarship</span><span class="small">Apr 2024</span></li>
+                    <li class="row"><span>Dean's Honours List</span><span class="small">Jan 2024</span></li>
+                    <li class="row"><span>University Scholarship Scheme for Continuing UG Student</span><span class="small">Oct 2023</span></li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="misc-title">
+                <h2 id="misc-title">Misc</h2>
+                <p>
+                    Outside of research, I go by Aragorn. It's a nod to my favorite movie series, <em>The Lord of the Rings</em>, and it's the name I've used ever since I first saw the films.
                 </p>
-            </article>
-
-            <article class="entry">
-                <h3>SessionIntentBench: Multi-task Inter-Session Intention-Shift Modeling Benchmark for E-commerce Customer Behavior Understanding</h3>
-                <p class="summary">Modeling framework for user purchase intent by extracting structured features from e-commerce session interactions.</p>
-                <p class="small byline">
-                    <span><span class="author-me">Yuqi Yang<sup class="cofirst" aria-label="co-first author">*</sup></span>, Weiqi Wang<sup class="cofirst" aria-label="co-first author">*</sup>, Baixuan Xu, Wei Fan, Qing Zong, Chunkit Chan, Zheye Deng, Xin Liu, Yifan Gao, Changlong Yu, Chen Luo, Yang Li, Zheng Li, Qingyu Yin, Bing Yin, Yangqiu Song</span>
-                    <span>ACL 2026 Findings</span>
-                    <a href="https://arxiv.org/abs/2507.20185">Paper</a>
-                </p>
-            </article>
-
-            <p class="small note"><sup class="cofirst">*</sup> Co-first authors.</p>
-        </section>
-
-        <section aria-labelledby="awards-title">
-            <h2 id="awards-title">Selected Awards</h2>
-            <ul class="rows">
-                <li class="row"><span>China Construction Bank Asia Scholarship</span><span class="small">Aug 2024</span></li>
-                <li class="row"><span>S.S. Chern Class Scholarship</span><span class="small">May 2024</span></li>
-                <li class="row"><span>Chiaphua Industries Limited Scholarship</span><span class="small">Apr 2024</span></li>
-                <li class="row"><span>Dean's Honours List</span><span class="small">Jan 2024</span></li>
-                <li class="row"><span>University Scholarship Scheme for Continuing UG Student</span><span class="small">Oct 2023</span></li>
-            </ul>
-        </section>
-
-        <section aria-labelledby="misc-title">
-            <h2 id="misc-title">Misc</h2>
-            <p>
-                Outside of research, I go by Aragorn. It's a nod to my favorite movie series, <em>The Lord of the Rings</em>, and it's the name I've used ever since I first saw the films.
-            </p>
-        </section>
+            </section>
+        </main>
 
         <footer>
             <p><a href="mailto:yangyuqi@wharton.upenn.edu">yangyuqi@wharton.upenn.edu</a></p>
@@ -395,6 +292,6 @@
                 <svg viewBox="0 0 10 14" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13V1.5M1 5.5l4-4 4 4"/></svg>
             </a>
         </footer>
-    </main>
+    </div>
 </body>
 </html>

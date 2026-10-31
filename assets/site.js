@@ -23,8 +23,4 @@
         syncToggle();
         toggle.hidden = false;
     }
-
-    const markScrolled = () => root.classList.toggle("scrolled", window.scrollY > 40);
-    addEventListener("scroll", markScrolled, { passive: true });
-    markScrolled();
 })();
