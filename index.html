@@ -14,8 +14,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400&display=swap">
-    <link rel="stylesheet" href="assets/site.css">
-    <script src="assets/site.js" defer></script>
+    <link rel="stylesheet" href="assets/site.css?v=2">
+    <script src="assets/site.js?v=2" defer></script>
     <style>
         /* Landing */
 
@@ -27,12 +27,6 @@
             min-height: 100svh;
             padding: 88px 24px 120px;
             position: relative;
-        }
-
-        .landing-content,
-        .sheet {
-            position: relative;
-            z-index: 2;
         }
 
         .landing-content {
@@ -92,44 +86,32 @@
             text-decoration-color: var(--accent);
         }
 
-        /* Scroll cue */
+        /* Scroll cue: one thin arrow at the foot of the first screen */
 
         .scroll-cue {
-            align-items: center;
-            background: var(--card);
-            border: 1px solid var(--rule);
-            border-radius: 50%;
-            bottom: 30px;
-            box-shadow:
-                0 1px 1.5px var(--shadow),
-                0 4px 14px rgba(31, 29, 26, 0.07);
-            color: var(--ink);
-            display: flex;
-            height: 46px;
-            justify-content: center;
-            left: calc(50% - 23px);
+            bottom: 22px;
+            color: var(--faint);
+            left: calc(50% - 22px);
+            padding: 10px 15px;
             position: absolute;
-            transition: opacity 0.4s ease, background-color 0.2s, border-color 0.2s, color 0.2s;
-            width: 46px;
-            z-index: 2;
+            transition: color 0.2s, opacity 0.4s ease;
         }
 
         .scroll-cue svg {
-            height: 20px;
+            display: block;
+            height: 40px;
             transition: transform 0.35s cubic-bezier(0.22, 0.8, 0.24, 1);
-            width: 12px;
+            width: 14px;
         }
 
         .scroll-cue:hover,
         .scroll-cue:focus-visible {
-            background: var(--ink);
-            border-color: var(--ink);
-            color: var(--desk);
+            color: var(--ink);
         }
 
         .scroll-cue:hover svg,
         .scroll-cue:focus-visible svg {
-            transform: translateY(2px);
+            transform: translateY(4px);
         }
 
         html.scrolled .scroll-cue {
@@ -242,41 +224,6 @@
             font-variant-numeric: tabular-nums;
         }
 
-        /* Where the tucked prints sit on this page */
-
-        .tuck-galton {
-            --size: 0.86;
-            --peek: 0.24;
-            --open: 0.8;
-            --tilt: -3.4deg;
-            --top: clamp(56px, 11vh, 120px);
-        }
-
-        .tuck-playfair {
-            --size: 1;
-            --peek: 0.25;
-            --open: 0.8;
-            --tilt: 2.8deg;
-            --top: calc(50vh + 20px);
-            --peek-delay: 1.55s;
-        }
-
-        .tuck-darwin {
-            --size: 0.8;
-            --peek: 0.25;
-            --open: 0.82;
-            --tilt: 2.2deg;
-            --top: 46%;
-        }
-
-        .tuck-lovelace {
-            --size: 0.98;
-            --peek: 0.24;
-            --open: 0.8;
-            --tilt: -3deg;
-            --top: 72%;
-        }
-
         @media (max-height: 820px) and (min-width: 960px) {
             .landing {
                 padding-bottom: 88px;
@@ -288,35 +235,12 @@
             }
         }
 
-        /* Narrow screens: the margins are too small, so two prints peek in above the name instead. */
-
         @media (max-width: 959px) {
-            :root {
-                --band: clamp(132px, 12vw + 118px, min(222px, 34vh));
-            }
-
             .landing {
                 align-items: start;
-                padding: calc(var(--band) + 22px) 22px 56px;
+                padding: 72px 22px 56px;
             }
 
-            .tuck-galton {
-                --w: calc(var(--band) * 0.92);
-                --top: calc(var(--band) * -0.28);
-                --peek: 0.3;
-                --tilt: -4deg;
-            }
-
-            .tuck-playfair {
-                --w: calc(var(--band) * 1.05);
-                --top: calc(var(--band) * 0.13);
-                --peek: 0.27;
-                --open: 0.78;
-                --tilt: 3deg;
-            }
-
-            .tuck-darwin,
-            .tuck-lovelace,
             .scroll-cue {
                 display: none;
             }
@@ -409,7 +333,7 @@
         </div>
 
         <a class="scroll-cue" href="#research" aria-label="Scroll down">
-            <svg viewBox="0 0 12 20" aria-hidden="true"><path d="M6 1.5v12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M1.6 12.4 6 19l4.4-6.6Q6 14.4 1.6 12.4Z" fill="currentColor"/></svg>
+            <svg viewBox="0 0 14 40" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 1v37M1.5 32.5 7 38l5.5-5.5"/></svg>
         </a>
     </div>
 
@@ -468,57 +392,9 @@
             <p><a href="mailto:yangyuqi@wharton.upenn.edu">yangyuqi@wharton.upenn.edu</a></p>
             <a class="to-top" href="#top">
                 Back to top
-                <svg viewBox="0 -10 40 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="chevron" d="M16.5-3 20-6.5 23.5-3"/><path class="bell" d="M1 13c7 0 9-.4 12-4.6S17 1 20 1s4 3.2 7 7.4S32 13 39 13"/></svg>
+                <svg viewBox="0 0 10 14" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13V1.5M1 5.5l4-4 4 4"/></svg>
             </a>
         </footer>
     </main>
-
-    <div class="tucks">
-        <div class="tuck tuck-left tuck-galton peeks">
-            <figure class="print" tabindex="0">
-                <div class="plate plate-galton" aria-hidden="true">
-                    <div class="band grid-white"></div>
-                    <div class="graph grid-ink"></div>
-                    <img src="assets/plates/galton.png" alt="" width="1488" height="1106">
-                    <svg viewBox="0 0 400 500" preserveAspectRatio="none">
-                        <path class="stroke curve" d="M22 468 C 96 468 130 462 158 430 C 178 404 186 372 200 372 C 214 372 222 404 242 430 C 270 462 304 468 378 468"/>
-                        <path class="stroke marks" d="M16 24h16M24 16v16M368 476h16M376 468v16"/>
-                    </svg>
-                </div>
-                <figcaption>F. Galton, 1889</figcaption>
-            </figure>
-        </div>
-
-        <div class="tuck tuck-right tuck-playfair peeks">
-            <figure class="print" tabindex="0">
-                <div class="plate plate-playfair" aria-hidden="true">
-                    <div class="band"></div>
-                    <img class="scan" src="assets/plates/playfair.jpg" alt="" width="1120" height="700">
-                </div>
-                <figcaption>W. Playfair, 1786</figcaption>
-            </figure>
-        </div>
-
-        <div class="tuck tuck-left tuck-darwin">
-            <figure class="print" tabindex="0">
-                <div class="plate plate-darwin" aria-hidden="true">
-                    <div class="band"></div>
-                    <div class="ruled"></div>
-                    <img src="assets/plates/darwin.png" alt="" width="764" height="1100" loading="lazy" decoding="async">
-                </div>
-                <figcaption>C. Darwin, 1837</figcaption>
-            </figure>
-        </div>
-
-        <div class="tuck tuck-right tuck-lovelace">
-            <figure class="print" tabindex="0">
-                <div class="plate plate-lovelace" aria-hidden="true">
-                    <div class="band grid-white"></div>
-                    <img src="assets/plates/lovelace.png" alt="" width="1190" height="833" loading="lazy" decoding="async">
-                </div>
-                <figcaption>A. Lovelace, 1843</figcaption>
-            </figure>
-        </div>
-    </div>
 </body>
 </html>
