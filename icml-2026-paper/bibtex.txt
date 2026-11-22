@@ -1,7 +1,0 @@
-@inproceedings{yang2026multi,
-  title = {Multi-Distribution Robust Conformal Prediction},
-  author = {Yang, Yuqi and Jin, Ying},
-  booktitle = {Proceedings of the 43rd International Conference on Machine Learning},
-  year = {2026},
-  url = {https://arxiv.org/abs/2601.02998}
-}

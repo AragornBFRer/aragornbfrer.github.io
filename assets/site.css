@@ -1,22 +1,16 @@
 /* Shared by every page: palette and themes, type, links, the theme toggle and the footer. Page layouts stay in each page. */
 
 :root {
-    --desk: #f3efe6;
-    --card: #f9f7f1;
-    --pill: rgba(249, 247, 241, 0.7);
-    --text: #3d3a35;
-    --muted: #6e6960;
-    --faint: #9a948a;
-    --ink: #1f1d1a;
-    --rule: rgba(31, 29, 26, 0.14);
-    --link-line: rgba(31, 29, 26, 0.3);
-    --highlight: rgba(230, 193, 90, 0.6);
-    --accent: #cf5137;
-    --shadow: rgba(31, 29, 26, 0.12);
-    --sans: "Schibsted Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --bg: #fff;
+    --wash: #f5f5f5;
+    --ink: #161616;
+    --text: #4d4d4d;
+    --muted: #767676;
+    --faint: #8f8f8f;
+    --link: #2466c4;
+    --sans: "Nunito Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
-    --column: 600px;
+    --column: 580px;
     color-scheme: light;
 }
 
@@ -24,35 +18,25 @@
 
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-        --desk: #171614;
-        --card: #211f1b;
-        --pill: rgba(33, 31, 27, 0.72);
-        --text: #cfc8bb;
-        --muted: #a0998d;
-        --faint: #78726a;
-        --ink: #f1ebe0;
-        --rule: rgba(241, 235, 224, 0.15);
-        --link-line: rgba(241, 235, 224, 0.32);
-        --highlight: rgba(230, 193, 90, 0.3);
-        --accent: #e5704f;
-        --shadow: rgba(0, 0, 0, 0.45);
+        --bg: #141414;
+        --wash: #1e1e1e;
+        --ink: #f2f2f2;
+        --text: #bdbdbd;
+        --muted: #949494;
+        --faint: #808080;
+        --link: #82b3f3;
         color-scheme: dark;
     }
 }
 
 :root[data-theme="dark"] {
-    --desk: #171614;
-    --card: #211f1b;
-    --pill: rgba(33, 31, 27, 0.72);
-    --text: #cfc8bb;
-    --muted: #a0998d;
-    --faint: #78726a;
-    --ink: #f1ebe0;
-    --rule: rgba(241, 235, 224, 0.15);
-    --link-line: rgba(241, 235, 224, 0.32);
-    --highlight: rgba(230, 193, 90, 0.3);
-    --accent: #e5704f;
-    --shadow: rgba(0, 0, 0, 0.45);
+    --bg: #141414;
+    --wash: #1e1e1e;
+    --ink: #f2f2f2;
+    --text: #bdbdbd;
+    --muted: #949494;
+    --faint: #808080;
+    --link: #82b3f3;
     color-scheme: dark;
 }
 
@@ -60,11 +44,12 @@
     box-sizing: border-box;
 }
 
+/* One family at one weight: size and tone carry the hierarchy. */
+
 html {
-    -webkit-font-smoothing: antialiased;
-    background: var(--desk);
+    background: var(--bg);
     color: var(--text);
-    font: 400 18px/1.62 var(--serif);
+    font: 400 17px / 1.65 var(--sans);
     scroll-behavior: smooth;
 }
 
@@ -80,53 +65,80 @@ ul {
     margin: 0;
 }
 
-a {
-    color: inherit;
+h1,
+h2,
+h3 {
+    color: var(--ink);
+    font-weight: 400;
 }
 
-/* Pill links and the theme toggle beside them */
+h1 {
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: 26px;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    margin-bottom: 12px;
+}
+
+p {
+    text-wrap: pretty;
+}
+
+a {
+    color: var(--link);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+}
+
+.small {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.page {
+    margin: 0 auto;
+    max-width: calc(var(--column) + 48px);
+    padding: 0 24px 72px;
+}
+
+section + section {
+    margin-top: 60px;
+}
+
+/* Rows of links and the theme toggle beside them */
 
 .links {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 24px;
-}
-
-.links a {
-    background: var(--pill);
-    border: 1px solid var(--rule);
-    border-radius: 999px;
-    color: var(--ink);
-    font: 500 14px / 1 var(--sans);
-    padding: 9px 15px;
-    text-decoration: none;
-    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
-}
-
-.links a:hover,
-.links a:focus-visible,
-.theme-toggle:hover,
-.theme-toggle:focus-visible {
-    background: var(--ink);
-    border-color: var(--ink);
-    color: var(--desk);
+    gap: 4px 22px;
 }
 
 .theme-toggle {
-    align-items: center;
-    background: var(--pill);
-    border: 1px solid var(--rule);
-    border-radius: 50%;
-    color: var(--ink);
+    background: none;
+    border: 0;
+    color: var(--muted);
     cursor: pointer;
     display: inline-flex;
     flex: none;
-    height: 34px;
-    justify-content: center;
     padding: 0;
-    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
-    width: 34px;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+    color: var(--ink);
 }
 
 .theme-toggle[hidden] {
@@ -134,8 +146,8 @@ a {
 }
 
 .theme-toggle svg {
-    height: 16px;
-    width: 16px;
+    height: 17px;
+    width: 17px;
 }
 
 .theme-toggle[data-next="dark"] .icon-sun,
@@ -147,56 +159,50 @@ a {
 
 footer {
     align-items: baseline;
-    border-top: 1px solid var(--rule);
     color: var(--muted);
     display: flex;
-    font: 400 14px / 1.5 var(--sans);
-    gap: 16px;
+    flex-wrap: wrap;
+    font-size: 15px;
+    gap: 6px 16px;
     justify-content: space-between;
-    margin-top: 96px;
-    padding-top: 18px;
-}
-
-footer a {
-    color: inherit;
-    text-decoration: none;
-}
-
-footer a:hover {
-    color: var(--ink);
-    text-decoration: underline;
+    margin-top: 88px;
 }
 
 .to-top {
     align-items: center;
+    color: inherit;
     display: inline-flex;
     flex: none;
     gap: 7px;
 }
 
-footer .to-top:hover,
-footer .to-top:focus-visible {
+.to-top:hover,
+.to-top:focus-visible {
     color: var(--ink);
     text-decoration: none;
 }
 
 .to-top svg {
     height: 13px;
-    transition: transform 0.3s cubic-bezier(0.22, 0.8, 0.24, 1);
     width: 10px;
 }
 
-.to-top:hover svg,
-.to-top:focus-visible svg {
-    transform: translateY(-2px);
+@media (max-width: 640px) {
+    .page {
+        padding: 0 20px 48px;
+    }
+
+    section + section {
+        margin-top: 48px;
+    }
+
+    footer {
+        margin-top: 64px;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
-    }
-
-    .to-top svg {
-        transition: none;
     }
 }
